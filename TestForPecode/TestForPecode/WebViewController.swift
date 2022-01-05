@@ -4,7 +4,7 @@ import WebKit
 class WebViewController: UIViewController {
     var url: URL!
     
-    
+    @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

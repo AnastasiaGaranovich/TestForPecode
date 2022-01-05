@@ -1,9 +1,28 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSearchController()
+    }
+}
+
+extension MainViewController {
+    func setUpSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Anime"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        //filterContentForSearchText(searchBar.text!)
     }
 }
 

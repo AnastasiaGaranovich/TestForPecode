@@ -12,7 +12,7 @@
         <!--Item 2-->
         <scene sceneID="T3e-Ov-Tcl">
             <objects>
-                <viewController id="I3T-NT-cKy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedArticlesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I3T-NT-cKy" customClass="SavedArticlesViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FSp-VT-XCE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,9 @@
                         <viewLayoutGuide key="safeArea" id="3aB-cx-eWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="kdG-jJ-570" id="Mtv-3w-uRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBX-G9-Xyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
