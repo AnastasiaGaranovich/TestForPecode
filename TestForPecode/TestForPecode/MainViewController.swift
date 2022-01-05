@@ -1,6 +1,6 @@
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -17,12 +17,15 @@ extension MainViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+    
+    func filterContentForSearchText(_ searchText: String) {
+    }
 }
 
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        //filterContentForSearchText(searchBar.text!)
+        filterContentForSearchText(searchBar.text!)
     }
 }
 

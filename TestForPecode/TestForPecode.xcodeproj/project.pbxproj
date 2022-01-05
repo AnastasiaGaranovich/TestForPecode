@@ -17,6 +17,7 @@
 		1B1521F52785E62700311E38 /* SavedArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1521F42785E62700311E38 /* SavedArticlesViewController.swift */; };
 		1B1521F72785E67800311E38 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1521F62785E67800311E38 /* WebViewController.swift */; };
 		1B1521F92785EB3500311E38 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1521F82785EB3500311E38 /* Extensions.swift */; };
+		1B1521FB2785F2B700311E38 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1521FA2785F2B700311E38 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1B1521F42785E62700311E38 /* SavedArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesViewController.swift; sourceTree = "<group>"; };
 		1B1521F62785E67800311E38 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1B1521F82785EB3500311E38 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1B1521FA2785F2B700311E38 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				1B1521F42785E62700311E38 /* SavedArticlesViewController.swift */,
 				1B1521F62785E67800311E38 /* WebViewController.swift */,
 				1B1521F82785EB3500311E38 /* Extensions.swift */,
+				1B1521FA2785F2B700311E38 /* Cell.swift */,
 			);
 			path = TestForPecode;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				1B1521E32785DD1B00311E38 /* MainViewController.swift in Sources */,
 				1B1521F92785EB3500311E38 /* Extensions.swift in Sources */,
+				1B1521FB2785F2B700311E38 /* Cell.swift in Sources */,
 				1B1521DF2785DD1B00311E38 /* AppDelegate.swift in Sources */,
 				1B1521E12785DD1B00311E38 /* SceneDelegate.swift in Sources */,
 				1B1521F72785E67800311E38 /* WebViewController.swift in Sources */,

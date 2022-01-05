@@ -1,6 +1,6 @@
 import UIKit
 
-class SavedArticlesViewController: UIViewController {
+final class SavedArticlesViewController: UIViewController {
     
 }
 
