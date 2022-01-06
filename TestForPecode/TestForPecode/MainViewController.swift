@@ -1,6 +1,8 @@
 import UIKit
 
 final class MainViewController: UIViewController {
+    let control = UIRefreshControl()
+    
     @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -10,12 +12,22 @@ final class MainViewController: UIViewController {
         Network.getNews {
             self.tableView.reloadData()
         }
+        
+        control.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(control)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        Network.getNews {
+            self.control.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
+        250
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
