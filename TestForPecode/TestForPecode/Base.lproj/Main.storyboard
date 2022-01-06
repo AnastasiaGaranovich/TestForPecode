@@ -17,10 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mXU-UD-hXG">
-                                <rect key="frame" x="20" y="139" width="374" height="652"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SI7-jB-QOk">
+                                <rect key="frame" x="0.0" y="124" width="414" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="w4j-AJ-uy9"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mXU-UD-hXG">
+                                <rect key="frame" x="0.0" y="220" width="414" height="590"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="HKg-Di-cjS"/>
+                                    <constraint firstAttribute="height" constant="590" id="c9L-pJ-rW9"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="I3T-NT-cKy" id="uQV-2F-VWh"/>
                                     <outlet property="delegate" destination="I3T-NT-cKy" id="1mY-L7-JqL"/>
@@ -29,8 +39,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UAh-55-90i"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SI7-jB-QOk" firstAttribute="top" secondItem="UAh-55-90i" secondAttribute="top" constant="80" id="1Ig-5W-uqO"/>
+                            <constraint firstItem="SI7-jB-QOk" firstAttribute="centerX" secondItem="FSp-VT-XCE" secondAttribute="centerX" id="KVj-aG-A6f"/>
+                            <constraint firstItem="mXU-UD-hXG" firstAttribute="top" secondItem="SI7-jB-QOk" secondAttribute="bottom" constant="45" id="Ztj-65-mjY"/>
+                            <constraint firstItem="mXU-UD-hXG" firstAttribute="centerX" secondItem="FSp-VT-XCE" secondAttribute="centerX" id="lee-so-rNo"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="IQD-gL-eo4"/>
+                    <connections>
+                        <outlet property="search" destination="SI7-jB-QOk" id="OPZ-hX-3H0"/>
+                        <outlet property="tableView" destination="mXU-UD-hXG" id="jxm-RP-JZp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipu-G0-nwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,9 +64,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdG-jJ-570">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdG-jJ-570">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -56,6 +75,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3aB-cx-eWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kdG-jJ-570" firstAttribute="top" secondItem="BIh-Oq-dF8" secondAttribute="top" id="9GP-4y-BDb"/>
+                            <constraint firstItem="kdG-jJ-570" firstAttribute="trailing" secondItem="3aB-cx-eWL" secondAttribute="trailing" id="A8l-gG-Js2"/>
+                            <constraint firstItem="kdG-jJ-570" firstAttribute="leading" secondItem="3aB-cx-eWL" secondAttribute="leading" id="arx-Hy-lhc"/>
+                            <constraint firstAttribute="bottom" secondItem="kdG-jJ-570" secondAttribute="bottom" id="tkC-Op-FbC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="webView" destination="kdG-jJ-570" id="Mtv-3w-uRc"/>
@@ -73,20 +98,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V0q-Cy-lfE">
-                                <rect key="frame" x="20" y="165" width="374" height="616"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V0q-Cy-lfE">
+                                <rect key="frame" x="0.0" y="220" width="414" height="590"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="590" id="8DF-Qu-CYX"/>
+                                    <constraint firstAttribute="width" constant="414" id="sVt-qm-64v"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="g9w-8n-AHX" id="ObL-yw-68T"/>
                                     <outlet property="delegate" destination="g9w-8n-AHX" id="wSV-Hz-z7R"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mM6-Jx-LSd">
+                                <rect key="frame" x="0.0" y="124" width="414" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="YlD-tU-FD7"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UZs-AK-gUa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V0q-Cy-lfE" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="55q-Y9-zmZ"/>
+                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="top" secondItem="UZs-AK-gUa" secondAttribute="top" constant="80" id="GyN-v2-IfA"/>
+                            <constraint firstItem="V0q-Cy-lfE" firstAttribute="top" secondItem="mM6-Jx-LSd" secondAttribute="bottom" constant="45" id="kcY-fd-LRr"/>
+                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="qu8-Uu-UCs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="wmx-fF-EJB"/>
+                    <connections>
+                        <outlet property="search" destination="mM6-Jx-LSd" id="D54-GB-7Pc"/>
+                        <outlet property="tableView" destination="V0q-Cy-lfE" id="4tm-QM-tyg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4X-RO-91w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

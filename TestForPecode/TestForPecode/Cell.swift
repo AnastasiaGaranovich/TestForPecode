@@ -7,4 +7,8 @@ final class Cell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var saveButton: UIButton!
+    
+    func setup() {
+        
+    }
 }
