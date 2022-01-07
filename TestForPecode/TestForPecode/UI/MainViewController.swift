@@ -1,17 +1,19 @@
 import UIKit
+import PaginatedTableView
 
 final class MainViewController: UIViewController {
-    let control = UIRefreshControl()
     
-    @IBOutlet weak var search: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    private let control = UIRefreshControl()
     
+    @IBOutlet private weak var search: UISearchBar!
+    @IBOutlet private weak var tableView: PaginatedTableView!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
-        Network.getNews { error in
+        Network.getPage(0) { error in
             if let error = error {
-                self.showError(error)
+                self.showError(error.localizedDescription)
                 return
             }
             self.tableView.reloadData()
@@ -20,21 +22,26 @@ final class MainViewController: UIViewController {
         control.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(control)
         tableView.estimatedRowHeight = 250
+        tableView.paginatedDelegate = self
+        tableView.paginatedDataSource = self
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        Network.getNews { error in
-            self.control.endRefreshing()
+        Network.getPage(0) { error in
             if let error = error {
-                self.showError(error)
+                self.showError(error.localizedDescription)
                 return
             }
+            self.control.endRefreshing()
             self.tableView.reloadData()
         }
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: PaginatedTableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         AppData.news.articles.count
@@ -53,7 +60,28 @@ extension MainViewController: UITableViewDataSource {
     
 }
     
-extension MainViewController: UITableViewDelegate {
+extension MainViewController: PaginatedTableViewDelegate {
+    func loadMore(_ pageNumber: Int, _ pageSize: Int, onSuccess: ((Bool) -> Void)?, onError: ((Error) -> Void)?) {
+        
+        Network.getPage(pageNumber + 1) { error in
+            
+            if let error = error {
+                onError?(error)
+                return
+            }
+    
+            if AppData.news.totalResults == AppData.news.articles.count {
+                onSuccess?(false)
+            }
+            else {
+                onSuccess?(true)
+            }
+        }
+        
+        print("page number: \(pageNumber)")
+        print("page size: \(pageSize)")
+        print(pageSize)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController

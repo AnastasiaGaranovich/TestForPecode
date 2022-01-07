@@ -1,20 +1,24 @@
 PODS:
-  - Alamofire (5.4.4)
-  - Kingfisher (7.1.1)
+  - Alamofire (5.5.0)
+  - Kingfisher (7.1.2)
+  - PaginatedTableView (1.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - Kingfisher
+  - PaginatedTableView
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
+    - PaginatedTableView
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
-  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
 
-PODFILE CHECKSUM: b14bea422be43ac3593b1fc0b4103256111fa251
+PODFILE CHECKSUM: e288ee7f1b90f1d4a426142ab7e200bafca28ee7
 
 COCOAPODS: 1.11.2

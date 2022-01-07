@@ -1,6 +1,5 @@
 target 'TestForPecode' do
-  use_frameworks!
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'PaginatedTableView'
 end
-
