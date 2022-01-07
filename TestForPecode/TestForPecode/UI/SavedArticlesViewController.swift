@@ -1,7 +1,6 @@
 import UIKit
 
 final class SavedArticlesViewController: UIViewController {
-    @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
 }
 
