@@ -2,4 +2,5 @@ target 'TestForPecode' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'PaginatedTableView'
+  pod 'iOSDropDown'
 end

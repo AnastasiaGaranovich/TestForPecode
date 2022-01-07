@@ -5,10 +5,16 @@ typealias Completion = (Error?) -> ()
 
 class Network {
     
-    static let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=39f797dbda78481bad174d2317fa3fb5"
+    static let url = "https://newsapi.org/v2/top-headlines?category=business&apiKey=39f797dbda78481bad174d2317fa3fb5&sortBy=publishedAt"
 
-    static func getPage(_ page: Int, _ completion: @escaping Completion) {
-        AF.request(url + "&page=\(page)").responseData { response in
+    static func getNews(page: Int, search: String?, country: String?, _ completion: @escaping Completion) {
+        
+        let search = search ?? ""
+        let country = country ?? "us"
+        
+        let url = url + "&page=\(page)&q=\(search)&country=\(country)"
+        
+        AF.request(url).responseData { response in
             switch response.result {
             case .success(let data):
                 do {
@@ -23,7 +29,6 @@ class Network {
                     
                     print("total results: \(AppData.news.totalResults)")
                     print("articles: \(AppData.news.articles.count)")
-
 
                     completion(nil)
                 } catch let error {

@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V0q-Cy-lfE" customClass="PaginatedTableView" customModule="PaginatedTableView">
-                                <rect key="frame" x="0.0" y="149" width="414" height="664"/>
+                                <rect key="frame" x="0.0" y="279" width="414" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="664" id="YlX-yI-ojt"/>
@@ -124,18 +124,43 @@
                                 </constraints>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mM6-Jx-LSd">
-                                <rect key="frame" x="0.0" y="98" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="228" width="414" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="YlD-tU-FD7"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2f2-C4-Vpf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-PB-ghe">
+                                        <rect key="frame" x="8" y="0.0" width="66" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="us" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-lZ-oPA" customClass="DropDown" customModule="iOSDropDown">
+                                        <rect key="frame" x="79" y="0.0" width="107" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="lJv-KM-Jn3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UZs-AK-gUa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2f2-C4-Vpf" firstAttribute="top" secondItem="UZs-AK-gUa" secondAttribute="top" id="4e1-j7-kSI"/>
                             <constraint firstItem="V0q-Cy-lfE" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="55q-Y9-zmZ"/>
-                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="top" secondItem="UZs-AK-gUa" secondAttribute="top" constant="10" id="GyN-v2-IfA"/>
+                            <constraint firstItem="2f2-C4-Vpf" firstAttribute="leading" secondItem="UZs-AK-gUa" secondAttribute="leading" id="HPc-Y9-N7e"/>
+                            <constraint firstItem="UZs-AK-gUa" firstAttribute="trailing" secondItem="2f2-C4-Vpf" secondAttribute="trailing" id="QJT-kj-i3n"/>
+                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="top" secondItem="2f2-C4-Vpf" secondAttribute="bottom" id="WKD-Tf-qHK"/>
                             <constraint firstItem="V0q-Cy-lfE" firstAttribute="top" secondItem="mM6-Jx-LSd" secondAttribute="bottom" id="kcY-fd-LRr"/>
                             <constraint firstItem="mM6-Jx-LSd" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="qu8-Uu-UCs"/>
                         </constraints>
@@ -143,7 +168,8 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="wmx-fF-EJB"/>
                     <navigationItem key="navigationItem" id="NCR-Tj-A6e"/>
                     <connections>
-                        <outlet property="search" destination="mM6-Jx-LSd" id="D54-GB-7Pc"/>
+                        <outlet property="countryDropDown" destination="qzD-lZ-oPA" id="s0F-PR-iwt"/>
+                        <outlet property="searchBar" destination="mM6-Jx-LSd" id="D54-GB-7Pc"/>
                         <outlet property="tableView" destination="V0q-Cy-lfE" id="4tm-QM-tyg"/>
                     </connections>
                 </viewController>

@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.5.0)
+  - iOSDropDown (0.3.4)
   - Kingfisher (7.1.2)
   - PaginatedTableView (1.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - iOSDropDown
   - Kingfisher
   - PaginatedTableView
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - iOSDropDown
     - Kingfisher
     - PaginatedTableView
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
 
-PODFILE CHECKSUM: e288ee7f1b90f1d4a426142ab7e200bafca28ee7
+PODFILE CHECKSUM: 991e63c2be172faf8b27aa3208137a45260b0ed2
 
 COCOAPODS: 1.11.2
