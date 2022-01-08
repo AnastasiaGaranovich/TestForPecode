@@ -10,10 +10,12 @@ final class Cell: UITableViewCell {
     @IBOutlet private weak var saveButton: UIButton!
     
     func setup(for article: Article) {
-        icon.kf.setImage(with: article.urlToImage)
-        sourceLabel.text = article.source.name
+        if let url = URL(string: article.urlToImage ?? "") {
+            icon.kf.setImage(with: url)
+        }
+        sourceLabel.text = article.source?.name
         authorLabel.text = article.author
         titleLabel.text = article.title
-        descriptionLabel.text = article.description
+        descriptionLabel.text = article.details
     }
 }

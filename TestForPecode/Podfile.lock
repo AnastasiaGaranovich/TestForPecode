@@ -1,28 +1,46 @@
 PODS:
-  - Alamofire (5.5.0)
+  - Alamofire (5.0.0-rc.2)
+  - AlamofireObjectMapper (6.2.0):
+    - Alamofire (= 5.0.0-rc.2)
+    - ObjectMapper (~> 3.5.1)
   - iOSDropDown (0.3.4)
   - Kingfisher (7.1.2)
+  - ObjectMapper (3.5.3)
   - PaginatedTableView (1.0.1)
+  - Realm (10.20.1):
+    - Realm/Headers (= 10.20.1)
+  - Realm/Headers (10.20.1)
+  - RealmSwift (10.20.1):
+    - Realm (= 10.20.1)
 
 DEPENDENCIES:
-  - Alamofire
+  - AlamofireObjectMapper
   - iOSDropDown
   - Kingfisher
   - PaginatedTableView
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireObjectMapper
     - iOSDropDown
     - Kingfisher
+    - ObjectMapper
     - PaginatedTableView
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  Realm: fac5ecd031fcb81171627b74944c885662d4b266
+  RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
 
-PODFILE CHECKSUM: 991e63c2be172faf8b27aa3208137a45260b0ed2
+PODFILE CHECKSUM: b01690bb451af118569299b4622e33dd84ca11e6
 
 COCOAPODS: 1.11.2

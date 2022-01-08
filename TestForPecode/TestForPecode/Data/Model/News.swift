@@ -1,13 +1,22 @@
-import Foundation
+import ObjectMapper
 
-class News: Codable {
-    var status: String
-    var totalResults: Int
-    var articles: [Article]
+class News: Mappable {
+    
+    var status: String = ""
+    var totalResults: Int = 0
+    var articles: [Article] = []
     
     init() {
-        status = ""
-        totalResults = 0
-        articles = []
+        
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        status <- map["status"]
+        totalResults <- map["totalResults"]
+        articles <- map["articles"]
     }
 }

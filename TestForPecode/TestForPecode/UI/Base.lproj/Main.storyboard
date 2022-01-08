@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="758" y="471"/>
         </scene>
-        <!--Item 2-->
+        <!--Saved-->
         <scene sceneID="T3e-Ov-Tcl">
             <objects>
                 <viewController storyboardIdentifier="SavedArticlesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I3T-NT-cKy" customClass="SavedArticlesViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                             <constraint firstItem="mXU-UD-hXG" firstAttribute="bottom" secondItem="UAh-55-90i" secondAttribute="bottom" id="efr-RG-9oy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="IQD-gL-eo4"/>
+                    <tabBarItem key="tabBarItem" title="Saved" id="IQD-gL-eo4"/>
                     <navigationItem key="navigationItem" id="9lV-Ql-sdZ"/>
                     <connections>
                         <outlet property="tableView" destination="mXU-UD-hXG" id="jxm-RP-JZp"/>
@@ -113,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="-852" y="471"/>
         </scene>
-        <!--Item 1-->
+        <!--News-->
         <scene sceneID="I93-nF-BAl">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g9w-8n-AHX" customClass="MainViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +169,7 @@
                             <constraint firstItem="mM6-Jx-LSd" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="qu8-Uu-UCs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="wmx-fF-EJB"/>
+                    <tabBarItem key="tabBarItem" title="News" id="wmx-fF-EJB"/>
                     <navigationItem key="navigationItem" id="NCR-Tj-A6e"/>
                     <connections>
                         <outlet property="countryDropDown" destination="qzD-lZ-oPA" id="s0F-PR-iwt"/>

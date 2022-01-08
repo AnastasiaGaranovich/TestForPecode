@@ -9,7 +9,7 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var countryDropDown: DropDown!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: PaginatedTableView!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -74,7 +74,7 @@ extension MainViewController: PaginatedTableViewDataSource {
     }
     
 }
-    
+
 extension MainViewController: PaginatedTableViewDelegate {
     func loadMore(_ pageNumber: Int, _ pageSize: Int, onSuccess: ((Bool) -> Void)?, onError: ((Error) -> Void)?) {
         
@@ -99,8 +99,14 @@ extension MainViewController: PaginatedTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let url = URL(string: AppData.news.articles[indexPath.row].url ?? "") else {
+            showError("Failed to get article URL")
+            return
+        }
+        
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        controller.url = AppData.news.articles[indexPath.row].url
+        controller.url = url
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -112,7 +118,7 @@ extension MainViewController: UISearchBarDelegate {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
         perform(#selector(self.reload(_:)), with: searchBar, afterDelay: 1)
     }
-
+    
     @objc func reload(_ searchBar: UISearchBar) {
         print("refresh")
         refresh(countryDropDown.text)

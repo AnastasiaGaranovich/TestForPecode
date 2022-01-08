@@ -1,6 +1,8 @@
 target 'TestForPecode' do
-  pod 'Alamofire'
+  use_frameworks!
+  pod 'AlamofireObjectMapper'
   pod 'Kingfisher'
   pod 'PaginatedTableView'
   pod 'iOSDropDown'
+  pod 'RealmSwift'
 end
