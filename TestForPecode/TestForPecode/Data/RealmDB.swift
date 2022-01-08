@@ -1,7 +1,6 @@
-import Foundation
 import RealmSwift
 
-class RealmDB {
+final class RealmDB {
     static let database = try! Realm()
     
     static func getNews() -> [Article] {
@@ -9,9 +8,9 @@ class RealmDB {
         return news
     }
     
-    static func saveNews(news: Article) {
+    static func saveArticle(_ article: Article) {
         try! database.write {
-            database.add(news)
+            database.add(article)
         }
     }
 }

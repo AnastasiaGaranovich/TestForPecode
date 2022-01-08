@@ -1,17 +1,14 @@
 import ObjectMapper
 
-class News: Mappable {
-    
+final class News: Mappable {
     var status: String = ""
     var totalResults: Int = 0
     var articles: [Article] = []
     
     init() {
-        
     }
     
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {

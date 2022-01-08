@@ -1,8 +1,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Article: Object, Mappable {
-        
+final class Article: Object, Mappable {
     @objc dynamic var source: Source?
     @objc dynamic var author: String?
     @objc dynamic var title: String = ""
@@ -13,11 +12,9 @@ class Article: Object, Mappable {
     @objc dynamic var url: String?
     
     override init() {
-        
     }
 
     required init?(map: ObjectMapper.Map) {
-        
     }
     
     func mapping(map: ObjectMapper.Map) {
@@ -30,5 +27,10 @@ class Article: Object, Mappable {
         content <- map["content"]
         url <- map["url"]
     }
-    
+}
+
+extension Article {
+    var isSaved: Bool {
+        AppData.savedNews.contains{ $0.title == title }
+    }
 }

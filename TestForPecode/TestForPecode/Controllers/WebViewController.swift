@@ -2,9 +2,15 @@ import UIKit
 import WebKit
 
 final class WebViewController: UIViewController {
+    // MARK: Properties
+    
     var url: URL!
     
-    @IBOutlet weak var webView: WKWebView!
+    // MARK: Outlets
+    
+    @IBOutlet private weak var webView: WKWebView!
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

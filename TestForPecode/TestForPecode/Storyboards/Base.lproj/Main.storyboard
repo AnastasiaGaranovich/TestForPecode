@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Saved news-->
         <scene sceneID="JFf-yC-Zha">
             <objects>
                 <navigationController id="Gok-HX-1hw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Cwy-tC-rdC"/>
+                    <tabBarItem key="tabBarItem" title="Saved news" image="bookmark.circle" catalog="system" id="Cwy-tC-rdC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZEu-ju-m4e">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="758" y="471"/>
         </scene>
-        <!--Saved-->
+        <!--Saved news-->
         <scene sceneID="T3e-Ov-Tcl">
             <objects>
                 <viewController storyboardIdentifier="SavedArticlesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I3T-NT-cKy" customClass="SavedArticlesViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" id="IQD-gL-eo4"/>
-                    <navigationItem key="navigationItem" id="9lV-Ql-sdZ"/>
+                    <navigationItem key="navigationItem" title="Saved news" id="9lV-Ql-sdZ"/>
                     <connections>
                         <outlet property="tableView" destination="mXU-UD-hXG" id="jxm-RP-JZp"/>
                     </connections>
@@ -94,13 +94,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBX-G9-Xyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="1852"/>
+            <point key="canvasLocation" x="1783" y="-252"/>
         </scene>
-        <!--Item-->
+        <!--News-->
         <scene sceneID="WwX-cB-mVX">
             <objects>
                 <navigationController id="chk-ru-UM7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="JC5-dl-hJR"/>
+                    <tabBarItem key="tabBarItem" title="News" image="newspaper" catalog="system" id="JC5-dl-hJR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nCn-48-Ugp">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -116,7 +116,7 @@
         <!--News-->
         <scene sceneID="I93-nF-BAl">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g9w-8n-AHX" customClass="MainViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g9w-8n-AHX" customClass="ArticlesViewController" customModule="TestForPecode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNO-HB-Apj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,31 +127,34 @@
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mM6-Jx-LSd">
                                 <rect key="frame" x="0.0" y="128" width="414" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="YlD-tU-FD7"/>
-                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2f2-C4-Vpf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-PB-ghe">
-                                        <rect key="frame" x="8" y="0.0" width="66" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-PB-ghe">
+                                        <rect key="frame" x="8" y="9.5" width="66" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="us" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-lZ-oPA" customClass="DropDown" customModule="iOSDropDown">
-                                        <rect key="frame" x="79" y="0.0" width="107" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="us" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-lZ-oPA" customClass="DropDown" customModule="iOSDropDown">
+                                        <rect key="frame" x="79" y="3" width="107" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="Yoi-6S-H74"/>
+                                            <constraint firstAttribute="width" constant="107" id="k8a-om-ILO"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="qzD-lZ-oPA" firstAttribute="centerY" secondItem="2f2-C4-Vpf" secondAttribute="centerY" id="Nel-6b-hHF"/>
+                                    <constraint firstItem="Kdh-PB-ghe" firstAttribute="centerY" secondItem="2f2-C4-Vpf" secondAttribute="centerY" id="Rri-Dt-7q0"/>
+                                    <constraint firstItem="Kdh-PB-ghe" firstAttribute="leading" secondItem="2f2-C4-Vpf" secondAttribute="leading" constant="8" id="bLu-2G-dT9"/>
                                     <constraint firstAttribute="height" constant="40" id="lJv-KM-Jn3"/>
+                                    <constraint firstItem="qzD-lZ-oPA" firstAttribute="leading" secondItem="Kdh-PB-ghe" secondAttribute="trailing" constant="5" id="zpn-vN-qgo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -161,16 +164,17 @@
                             <constraint firstItem="2f2-C4-Vpf" firstAttribute="top" secondItem="UZs-AK-gUa" secondAttribute="top" id="4e1-j7-kSI"/>
                             <constraint firstItem="V0q-Cy-lfE" firstAttribute="leading" secondItem="UZs-AK-gUa" secondAttribute="leading" id="4ff-y6-4DR"/>
                             <constraint firstItem="2f2-C4-Vpf" firstAttribute="leading" secondItem="UZs-AK-gUa" secondAttribute="leading" id="HPc-Y9-N7e"/>
+                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="trailing" secondItem="UZs-AK-gUa" secondAttribute="trailing" id="LTM-t8-dGb"/>
                             <constraint firstItem="UZs-AK-gUa" firstAttribute="trailing" secondItem="2f2-C4-Vpf" secondAttribute="trailing" id="QJT-kj-i3n"/>
                             <constraint firstItem="V0q-Cy-lfE" firstAttribute="trailing" secondItem="UZs-AK-gUa" secondAttribute="trailing" id="R7d-L1-Mn6"/>
                             <constraint firstItem="V0q-Cy-lfE" firstAttribute="top" secondItem="mM6-Jx-LSd" secondAttribute="bottom" id="TqN-BN-bSm"/>
                             <constraint firstItem="mM6-Jx-LSd" firstAttribute="top" secondItem="2f2-C4-Vpf" secondAttribute="bottom" id="WKD-Tf-qHK"/>
                             <constraint firstAttribute="bottom" secondItem="V0q-Cy-lfE" secondAttribute="bottom" id="hQw-LP-SLl"/>
-                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="centerX" secondItem="XNO-HB-Apj" secondAttribute="centerX" id="qu8-Uu-UCs"/>
+                            <constraint firstItem="mM6-Jx-LSd" firstAttribute="leading" secondItem="UZs-AK-gUa" secondAttribute="leading" id="n0P-gn-2fe"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" id="wmx-fF-EJB"/>
-                    <navigationItem key="navigationItem" id="NCR-Tj-A6e"/>
+                    <navigationItem key="navigationItem" title="News" id="NCR-Tj-A6e"/>
                     <connections>
                         <outlet property="countryDropDown" destination="qzD-lZ-oPA" id="s0F-PR-iwt"/>
                         <outlet property="searchBar" destination="mM6-Jx-LSd" id="D54-GB-7Pc"/>
@@ -201,6 +205,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark.circle" catalog="system" width="128" height="121"/>
+        <image name="newspaper" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

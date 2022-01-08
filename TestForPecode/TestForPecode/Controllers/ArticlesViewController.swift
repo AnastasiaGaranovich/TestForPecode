@@ -1,18 +1,25 @@
-import UIKit
 import iOSDropDown
 import PaginatedTableView
+import UIKit
 
-final class MainViewController: UIViewController {
+final class ArticlesViewController: UIViewController {
+    // MARK: Properties
     
     private let control = UIRefreshControl()
+    
+    // MARK: Outlets
     
     @IBOutlet private weak var countryDropDown: DropDown!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: PaginatedTableView!
     
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
+        searchBar.delegate = self
+        setupDropDown()
+        setupTableView()
         Network.getNews(page: 0, search: searchBar.text, country: countryDropDown.text) { error in
             if let error = error {
                 self.showError(error.localizedDescription)
@@ -20,28 +27,30 @@ final class MainViewController: UIViewController {
             }
             self.tableView.reloadData()
         }
-        
+    }
+}
+
+// MARK: - Methods
+
+private extension ArticlesViewController {
+    func setupDropDown() {
+        countryDropDown.optionArray = StaticData.countries
+        countryDropDown.didSelect { value, _, _ in
+            self.refresh(value)
+        }
+    }
+    
+    func setupTableView() {
+        tableView.register(UINib(nibName: ArticleCell.identifier, bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
         control.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(control)
         tableView.estimatedRowHeight = 250
         tableView.paginatedDelegate = self
         tableView.paginatedDataSource = self
-        
-        searchBar.delegate = self
-        
-        countryDropDown.optionArray = ["ae", "ar", "at", "au", "be", "bg", "br", "ca", "ch", "cn", "co", "cu", "cz", "de", "eg", "fr", "gb", "gr", "hk", "hu", "id", "ie", "il", "in", "it", "jp", "kr", "lt", "lv", "ma", "mx", "my", "ng", "nl", "no", "nz", "ph", "pl", "pt", "ro", "rs", "ru", "sa", "se", "sg", "si", "sk", "th", "tr", "tw", "ua", "us", "ve", "za"]
-        
-        countryDropDown.didSelect { value, _, _ in
-            print("spesss")
-            print(value)
-            self.refresh(value)
-        }
     }
-    
-    @IBAction func didPressCountryButton(_ sender: Any) {
-        
-    }
-    
+}
+
+extension ArticlesViewController {
     @objc func refresh(_ country: String?) {
         Network.getNews(page: 0, search: searchBar.text, country: country) { error in
             if let error = error {
@@ -54,7 +63,9 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: PaginatedTableViewDataSource {
+// MARK: - PaginatedTableViewDataSource
+
+extension ArticlesViewController: PaginatedTableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -64,7 +75,8 @@ extension MainViewController: PaginatedTableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath) as! ArticleCell
+        cell.delegate = self
         cell.setup(for: AppData.news.articles[indexPath.row])
         return cell
     }
@@ -72,14 +84,13 @@ extension MainViewController: PaginatedTableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
-    
 }
 
-extension MainViewController: PaginatedTableViewDelegate {
+// MARK: - PaginatedTableViewDelegate
+
+extension ArticlesViewController: PaginatedTableViewDelegate {
     func loadMore(_ pageNumber: Int, _ pageSize: Int, onSuccess: ((Bool) -> Void)?, onError: ((Error) -> Void)?) {
-        
-        Network.getNews(page: pageNumber + 1, search: searchBar.text, country: countryDropDown.text){ error in
-            
+        Network.getNews(page: pageNumber + 1, search: searchBar.text, country: countryDropDown.text) { error in
             if let error = error {
                 onError?(error)
                 return
@@ -92,14 +103,9 @@ extension MainViewController: PaginatedTableViewDelegate {
                 onSuccess?(true)
             }
         }
-        
-        print("page number: \(pageNumber)")
-        print("page size: \(pageSize)")
-        print(pageSize)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         guard let url = URL(string: AppData.news.articles[indexPath.row].url ?? "") else {
             showError("Failed to get article URL")
             return
@@ -112,7 +118,9 @@ extension MainViewController: PaginatedTableViewDelegate {
     }
 }
 
-extension MainViewController: UISearchBarDelegate {
+// MARK: - UISearchBarDelegate
+
+extension ArticlesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: searchBar)
@@ -120,7 +128,17 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     @objc func reload(_ searchBar: UISearchBar) {
-        print("refresh")
         refresh(countryDropDown.text)
+    }
+}
+
+// MARK: - CellDelegate
+
+extension ArticlesViewController: CellDelegate {
+    func cellDidPressSave(_ article: Article) {
+        if !article.isSaved {
+            AppData.savedNews.append(article)
+            RealmDB.saveArticle(article)
+        }
     }
 }

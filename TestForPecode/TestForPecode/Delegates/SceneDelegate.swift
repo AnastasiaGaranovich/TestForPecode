@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  TestForPecode
-//
-//  Created by Анастасия Гаранович on 05.01.2022.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
