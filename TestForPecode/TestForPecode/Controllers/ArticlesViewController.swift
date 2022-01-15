@@ -51,7 +51,10 @@ private extension ArticlesViewController {
 }
 
 extension ArticlesViewController {
-    @objc func refresh(_ country: String?) {
+    @objc func refresh(_ country: Any?) {
+        var country = country as? String
+        country = country ?? countryDropDown.text
+        
         Network.getNews(page: 0, search: searchBar.text, country: country) { error in
             if let error = error {
                 self.showError(error.localizedDescription)
